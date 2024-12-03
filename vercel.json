@@ -8,27 +8,12 @@
                 "maxLambdaSize": "10mb",
                 "runtime": "python3.9"
             }
-        },
-        {
-            "src": "frontend/build/**",
-            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "app.py"
-        },
-        {
-            "src": "/socket.io/(.*)",
-            "dest": "app.py"
-        },
-        {
-            "handle": "filesystem"
-        },
-        {
             "src": "/(.*)",
-            "dest": "frontend/build/index.html"
+            "dest": "app.py"
         }
     ],
     "env": {
