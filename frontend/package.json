@@ -2,6 +2,7 @@
   "name": "the-b-league",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -40,7 +41,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://Darys21.github.io/B",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.2.0"
