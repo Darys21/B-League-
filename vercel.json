@@ -6,30 +6,22 @@
             "use": "@vercel/python"
         },
         {
-            "src": "frontend/build/**",
-            "use": "@vercel/static"
+            "src": "frontend/package.json",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/app.py"
+            "dest": "app.py"
         },
         {
             "src": "/socket.io/(.*)",
-            "dest": "/app.py"
-        },
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
+            "dest": "app.py"
         },
         {
             "src": "/(.*)",
-            "dest": "/frontend/build/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/build/index.html"
+            "dest": "frontend/$1"
         }
     ],
     "env": {
