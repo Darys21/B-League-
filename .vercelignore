@@ -12,3 +12,5 @@ frontend/.git
 frontend/.gitignore
 frontend/README.md
 frontend/public/*.map
+frontend/src/**/*.test.js
+frontend/build/static/**/*.map

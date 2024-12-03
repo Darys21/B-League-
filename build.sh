@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Build frontend
+# Build frontend avec optimisation
 cd frontend
-npm install --production
+npm ci --production --no-optional
 npm run build
-cd ..
+rm -rf node_modules/.cache
 
-# Install Python dependencies
-pip install -r requirements.txt --no-cache-dir
+# Install Python dependencies avec optimisation
+pip install --no-cache-dir -r requirements.txt --only-binary :all:
