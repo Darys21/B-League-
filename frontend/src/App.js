@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DraftPage from './components/DraftPage';
 import AdminLogin from './components/AdminLogin';
 import styled from 'styled-components';
 import io from 'socket.io-client';
