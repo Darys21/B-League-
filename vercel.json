@@ -6,34 +6,30 @@
             "use": "@vercel/python"
         },
         {
-            "src": "frontend/package.json",
-            "use": "@vercel/node",
-            "config": {
-                "buildCommand": "cd frontend && npm install && npm run build",
-                "outputDirectory": "frontend/build"
-            }
+            "src": "frontend/build/**",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "app.py"
+            "dest": "/app.py"
         },
         {
             "src": "/socket.io/(.*)",
-            "dest": "app.py"
+            "dest": "/app.py"
         },
         {
             "src": "/static/(.*)",
-            "dest": "frontend/build/static/$1"
-        },
-        {
-            "src": "/(.*\\.[^/]*)",
-            "dest": "frontend/build/$1"
+            "dest": "/static/$1"
         },
         {
             "src": "/(.*)",
-            "dest": "frontend/build/index.html"
+            "dest": "/frontend/build/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/frontend/build/index.html"
         }
     ],
     "env": {
