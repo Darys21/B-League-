@@ -5,7 +5,8 @@
             "src": "app.py",
             "use": "@vercel/python",
             "config": {
-                "maxLambdaSize": "15mb"
+                "maxLambdaSize": "10mb",
+                "runtime": "python3.9"
             }
         },
         {
@@ -16,18 +17,22 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/app.py"
+            "dest": "app.py"
         },
         {
             "src": "/socket.io/(.*)",
-            "dest": "/app.py"
+            "dest": "app.py"
         },
         {
             "handle": "filesystem"
         },
         {
             "src": "/(.*)",
-            "dest": "/frontend/build/index.html"
+            "dest": "frontend/build/index.html"
         }
-    ]
+    ],
+    "env": {
+        "PYTHONPATH": ".",
+        "FLASK_ENV": "production"
+    }
 }

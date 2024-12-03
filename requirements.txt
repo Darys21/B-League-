@@ -4,3 +4,4 @@ Flask-Cors==3.0.10
 python-engineio==4.2.1
 python-socketio==5.4.0
 python-dotenv==1.0.0
+Werkzeug==2.0.3

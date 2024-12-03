@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+.env
+venv
+.git
+.gitignore
+README.md
+test.py
+*.db
+frontend/node_modules
+frontend/.git
+frontend/.gitignore
+frontend/README.md
+frontend/public/*.map
