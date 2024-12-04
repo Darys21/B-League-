@@ -5,11 +5,11 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "https://your-backend-url.com/api/$1"
+            "dest": "https://b-league-api.onrender.com/api/$1"
         },
         {
             "src": "/socket.io/(.*)",
-            "dest": "https://your-backend-url.com/socket.io/$1"
+            "dest": "https://b-league-api.onrender.com/socket.io/$1"
         },
         {
             "src": "/(.*)",
