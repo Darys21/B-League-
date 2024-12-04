@@ -7,10 +7,9 @@ import DraftBoard from './components/DraftBoard';
 import './App.css';
 
 // Use relative paths for API and Socket
-const API_URL = '/';
-const SOCKET_URL = '/';
+const BACKEND_URL = 'https://b-league-api-production.up.railway.app';
 
-const socket = io(SOCKET_URL, {
+const socket = io(BACKEND_URL, {
   path: '/socket.io',
   transports: ['websocket', 'polling'],
   reconnection: true,
