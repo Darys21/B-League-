@@ -1,3 +1,14 @@
-*
-!frontend/
-!vercel.json
+/*.py
+/*.txt
+/*.sh
+/*.md
+/__pycache__
+/.git
+/.env
+/venv
+/*.db
+!/frontend
+/frontend/node_modules
+/frontend/.git
+/frontend/build
+/frontend/*.log
