@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AdminLogin from './components/AdminLogin';
-import styled from 'styled-components';
 import io from 'socket.io-client';
+import styled from 'styled-components';
+import AdminLogin from './components/AdminLogin';
 import DraftBoard from './components/DraftBoard';
+import './App.css';
+
+const API_URL = process.env.REACT_APP_API_URL || 'https://b-league-api-production.up.railway.app';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://b-league-api-production.up.railway.app';
+
+const socket = io(SOCKET_URL, {
+  path: '/socket.io',
+  transports: ['websocket', 'polling']
+});
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -47,14 +56,12 @@ function App() {
   });
 
   React.useEffect(() => {
-    const newSocket = io('http://localhost:5000');
-
-    newSocket.on('connect', () => {
+    socket.on('connect', () => {
       console.log('Connected to server');
-      newSocket.emit('get_draft_state');
+      socket.emit('get_draft_state');
     });
 
-    newSocket.on('draft_state', (state) => {
+    socket.on('draft_state', (state) => {
       setDraftState(prevState => ({
         ...prevState,
         picks: state.picks || [],
@@ -65,7 +72,7 @@ function App() {
       }));
     });
 
-    newSocket.on('pick_made', (data) => {
+    socket.on('pick_made', (data) => {
       setDraftState(prevState => ({
         ...prevState,
         picks: [...prevState.picks, data.pick],
@@ -74,7 +81,7 @@ function App() {
       }));
     });
 
-    return () => newSocket.close();
+    return () => socket.close();
   }, []);
 
   return (

@@ -15,9 +15,16 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'votre_clé_secrète')
 
-# Configuration CORS pour permettre les requêtes depuis n'importe quelle origine en production
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='gevent', path="/socket.io")
+# Configuration CORS pour permettre les requêtes depuis Vercel
+CORS(app, resources={
+    r"/*": {
+        "origins": ["https://b-league.vercel.app", "http://localhost:3000"],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }
+})
+
+socketio = SocketIO(app, cors_allowed_origins=["https://b-league.vercel.app", "http://localhost:3000"], async_mode='gevent', path="/socket.io")
 
 # Préfixe toutes les routes avec /api
 API_PREFIX = "/api"
