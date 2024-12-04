@@ -16,8 +16,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'votre_clé_secrète')
 
 # Configuration CORS pour permettre les requêtes depuis n'importe quelle origine en production
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-socketio = SocketIO(app, cors_allowed_origins="*", path="/socket.io", async_mode='threading')
+CORS(app)
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='gevent', path="/socket.io")
 
 # Préfixe toutes les routes avec /api
 API_PREFIX = "/api"
