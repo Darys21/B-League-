@@ -6,14 +6,16 @@ import AdminLogin from './components/AdminLogin';
 import DraftBoard from './components/DraftBoard';
 import './App.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://b-league-api-production.up.railway.app:8080';
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://b-league-api-production.up.railway.app:8080';
+// Use relative paths for API and Socket
+const API_URL = '/';
+const SOCKET_URL = '/';
 
 const socket = io(SOCKET_URL, {
   path: '/socket.io',
   transports: ['websocket', 'polling'],
   reconnection: true,
-  reconnectionAttempts: 5
+  reconnectionAttempts: 5,
+  autoConnect: true
 });
 
 const AppContainer = styled.div`

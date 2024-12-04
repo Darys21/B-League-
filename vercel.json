@@ -11,6 +11,14 @@
     ],
     "routes": [
         {
+            "src": "^/api/.*",
+            "dest": "https://b-league-api-production.up.railway.app:8080/api/$1"
+        },
+        {
+            "src": "^/socket.io/.*",
+            "dest": "https://b-league-api-production.up.railway.app:8080/socket.io/$1"
+        },
+        {
             "src": "/static/(.*)",
             "dest": "/frontend/build/static/$1"
         },
