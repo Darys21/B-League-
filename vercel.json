@@ -1,15 +1,20 @@
 {
     "version": 2,
-    "buildCommand": "cd frontend && npm ci --production --no-optional && npm run build",
+    "buildCommand": "cd frontend && npm install && npm run build",
     "outputDirectory": "frontend/build",
+    "installCommand": "cd frontend && npm install",
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "https://b-league-api.onrender.com/api/$1"
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
         },
         {
-            "src": "/socket.io/(.*)",
-            "dest": "https://b-league-api.onrender.com/socket.io/$1"
+            "src": "/favicon.ico",
+            "dest": "/favicon.ico"
+        },
+        {
+            "src": "/manifest.json",
+            "dest": "/manifest.json"
         },
         {
             "src": "/(.*)",
