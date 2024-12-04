@@ -11,15 +11,16 @@
     ],
     "routes": [
         {
-            "handle": "filesystem"
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
         },
         {
-            "src": "/api/(.*)",
-            "dest": "https://b-league-api.vercel.app/api/$1"
+            "src": "/favicon.ico",
+            "dest": "/favicon.ico"
         },
         {
-            "src": "/socket.io/(.*)",
-            "dest": "https://b-league-api.vercel.app/socket.io/$1"
+            "src": "/manifest.json",
+            "dest": "/manifest.json"
         },
         {
             "src": "/(.*)",
